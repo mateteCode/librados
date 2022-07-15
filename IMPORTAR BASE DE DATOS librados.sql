@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-07-2022 a las 05:33:56
+-- Tiempo de generación: 15-07-2022 a las 20:33:11
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `librados`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `entregas`
+--
+
+CREATE TABLE `entregas` (
+  `id` int(11) NOT NULL,
+  `id_ofrecido` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `entregas`
+--
+
+INSERT INTO `entregas` (`id`, `id_ofrecido`, `id_usuario`, `fecha`) VALUES
+(1, 16, 6, '2022-07-15 14:11:22'),
+(2, 5, 11, '2022-07-15 14:29:12'),
+(5, 15, 6, '2022-07-15 15:15:28'),
+(6, 7, 11, '2022-07-15 15:17:29'),
+(7, 14, 6, '2022-07-15 15:18:01'),
+(8, 17, 4, '2022-07-15 15:28:57');
 
 -- --------------------------------------------------------
 
@@ -48,7 +73,10 @@ INSERT INTO `libros` (`id`, `isbn`, `autor`, `titulo`, `año`, `edicion`, `punta
 (3, '9789875661240', 'Stephen King', 'La Niebla', 2006, 1, '0.0', NULL),
 (4, '9780321349804', 'Ken Arnold', 'The Java Programming Language', 2005, 4, '0.0', NULL),
 (5, '9789385909665', ' Surbhi Kakar', 'A Textbook of Java Programming', 2017, 1, '0.0', NULL),
-(6, '9781118441428', 'John Paul Mueller', 'CSS3 For Dummies', 2013, 1, '0.0', NULL);
+(6, '9781118441428', 'John Paul Mueller', 'CSS3 For Dummies', 2013, 1, '0.0', NULL),
+(7, '9789500766647', 'Isabel Allende', 'Violeta', 2021, 1, '0.0', NULL),
+(8, '9789504977261', 'Wolff Tracy', 'Furia', 2022, 1, '0.0', NULL),
+(9, '9789504977629', 'Hoover Colleen', 'Verity', 2022, 1, '0.0', NULL);
 
 -- --------------------------------------------------------
 
@@ -77,7 +105,10 @@ INSERT INTO `ofrecidos` (`id`, `id_libro`, `id_usuario`, `fecha`, `salud`) VALUE
 (11, 2, 5, '2022-07-13 00:37:43', '4.0'),
 (12, 1, 7, '2022-07-13 11:05:34', '3.0'),
 (13, 2, 6, '2022-07-13 12:47:50', '2.0'),
-(14, 6, 4, '2022-07-14 23:34:52', '5.0');
+(14, 6, 4, '2022-07-14 23:34:52', '5.0'),
+(15, 7, 15, '2022-07-15 09:45:57', '5.0'),
+(16, 8, 15, '2022-07-15 10:00:50', '4.5'),
+(17, 9, 15, '2022-07-15 10:06:04', '5.0');
 
 -- --------------------------------------------------------
 
@@ -97,8 +128,6 @@ CREATE TABLE `reservas` (
 --
 
 INSERT INTO `reservas` (`id`, `id_ofrecido`, `id_usuario`, `fecha`) VALUES
-(2, 5, 11, '2022-07-14 22:43:00'),
-(3, 7, 11, '2022-07-14 22:56:59'),
 (4, 9, 11, '2022-07-14 22:58:58'),
 (5, 13, 11, '2022-07-14 23:47:03');
 
@@ -125,21 +154,14 @@ INSERT INTO `solicitudes` (`id`, `id_ofrecido`, `id_usuario`, `fecha`) VALUES
 (9, 12, 4, '2022-07-14 23:36:24'),
 (10, 13, 4, '2022-07-14 23:36:57'),
 (11, 11, 4, '2022-07-14 23:42:31'),
-(12, 14, 6, '2022-07-14 23:47:39'),
-(13, 14, 12, '2022-07-15 00:14:20'),
 (14, 12, 12, '2022-07-15 00:14:26'),
 (15, 9, 12, '2022-07-15 00:22:00'),
-(16, 7, 12, '2022-07-15 00:22:03'),
-(17, 5, 12, '2022-07-15 00:22:13'),
 (18, 8, 13, '2022-07-15 00:27:33'),
 (19, 10, 13, '2022-07-15 00:27:37'),
-(20, 7, 13, '2022-07-15 00:27:41'),
-(21, 14, 13, '2022-07-15 00:27:45'),
-(22, 5, 13, '2022-07-15 00:27:51'),
 (23, 13, 13, '2022-07-15 00:29:58'),
 (24, 13, 14, '2022-07-15 00:32:45'),
 (25, 11, 14, '2022-07-15 00:32:49'),
-(26, 14, 14, '2022-07-15 00:32:53');
+(28, 12, 15, '2022-07-15 09:18:56');
 
 -- --------------------------------------------------------
 
@@ -179,11 +201,20 @@ INSERT INTO `usuarios` (`id`, `usuario`, `password`, `nombre`, `email`, `telefon
 (11, 'patricia22', 'patricia', 'Patricia', 'patricia@gmail.com', '1109453478', '0.0', '-34.56690289', '-58.56425902', 'user', '2022-07-13'),
 (12, 'manuelito', 'manuel', 'Manuel', 'manuel@gmail.com', '1134562345', '0.0', '-34.50244362', '-58.52828647', 'user', '2022-07-15'),
 (13, 'macarena12', 'macarena', 'Macarena', 'macarena@gmail.com', '1143563087', '0.0', '-34.55894750', '-58.55585068', 'user', '2022-07-15'),
-(14, 'ricardito', 'ricardo', 'Ricardo', 'ricardo@gmail.com', '1145639856', '0.0', '-34.57649816', '-58.53690056', 'user', '2022-07-15');
+(14, 'ricardito', 'ricardo', 'Ricardo', 'ricardo@gmail.com', '1145639856', '0.0', '-34.57649816', '-58.53690056', 'user', '2022-07-15'),
+(15, 'sofia45', 'sofia', 'Sofia', 'sofia@gmail.com', '1189756325', '0.0', '-34.56086150', '-58.55883690', 'user', '2022-07-15');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `entregas`
+--
+ALTER TABLE `entregas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_ofrecido` (`id_ofrecido`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `libros`
@@ -230,38 +261,51 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `entregas`
+--
+ALTER TABLE `entregas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `ofrecidos`
 --
 ALTER TABLE `ofrecidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `entregas`
+--
+ALTER TABLE `entregas`
+  ADD CONSTRAINT `entregas_ibfk_1` FOREIGN KEY (`id_ofrecido`) REFERENCES `ofrecidos` (`id`),
+  ADD CONSTRAINT `entregas_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `ofrecidos`
