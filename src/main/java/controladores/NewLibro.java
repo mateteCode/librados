@@ -26,7 +26,7 @@ public class NewLibro extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Libro libro = null;
 		Usuario usuario = null;
-		String url = "libronuevo.jsp";
+		String url = "Index?accion=disponibles";
 		String mensaje = null;
 		float salud = -1;
 		String isbn = request.getParameter("isbn");

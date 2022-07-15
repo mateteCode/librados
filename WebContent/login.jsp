@@ -12,7 +12,7 @@
  			<%@include file="/vistas/error.jsp" %>
  			<div class="form-content main container">
 	 			<form method="POST" action="LoginUsuario" class="form bg-light p-5">
-	 				<h1 class="text-center">Ingresar</h1>
+	 				<h1 class="text-center">Ingresar al Sistema</h1>
 	 				<div class="input-group">
 	 					<i class="fas fa-envelope fa-2x"></i>
 	 					<input type="email" name="email" placeholder="Correo Electrónico" class="form-control" required/>
@@ -21,7 +21,7 @@
 	 					<i class="fas fa-lock fa-2x"></i>
 	 					<input type="password"  name="password" placeholder="Contraseña" class="form-control" required/>
 	 				</div>
-	 				<input type="submit" class="btn btn-block btn-outline-primary mt-3" value="Login" />
+	 				<input type="submit" class="btn btn-block btn-outline-primary mt-3" value="Entrar" />
 	 				<div class="container">
 	 					<p class="fs-6">Si no tiene una cuenta, puede <a href="registrarse.jsp">registarse</a></p>
 	 				</div>

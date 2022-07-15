@@ -5,7 +5,7 @@
 <%@ page import="java.lang.*"%>
 <html>
 <head>
-	<title>Insert title here</title>
+	<title>Interacciones con otros usuarios</title>
 	<%@include file="/vistas/head.html" %>
 <!-- 	<script defer src="js/main.js"></script> -->
 	<!-- Vue -->
@@ -44,7 +44,7 @@
 					            <td>${p.usuario} (${p.puntaje})</td>
 					            <td>${p.distancia}</td>
 					            <td>${p.tiempo}</td>
-					            <td><a href="Index?accion=reservar&id=${p.id}">Reservar</a></td>
+					            <td><a href="Index?accion=reservar&id=${p.id}"><i class="fa-solid fa-hand-point-left"></i></a></td>
 					        </tr>
 					    </c:forEach>
 		 			</table>
@@ -57,7 +57,7 @@
 			
 			<h3>Reservas</h3>
 			<c:choose>
-				<c:when test="${sessionScope.interacciones.size() > 0}">
+				<c:when test="${sessionScope.reservas.size() > 0}">
 					<table class="table table-striped">
 					    <c:forEach items="${sessionScope.reservas}" var="p">
 					        <tr>
@@ -69,7 +69,7 @@
 					            <td>${p.usuario} (${p.puntaje})</td>
 					            <td>${p.distancia}</td>
 					            <td>${p.tiempo}</td>
-					            <td><a href="Index?accion=entregar&id=${p.id}">Entregar</a></td>
+					            <td><a href="Index?accion=entregar&id=${p.id}"><i class="fa-solid fa-hand-peace"></i></a></td>
 					        </tr>
 					    </c:forEach>
 		 			</table>

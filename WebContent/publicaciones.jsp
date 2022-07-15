@@ -5,7 +5,7 @@
 <%@ page import="java.lang.*"%>
 <html>
 <head>
-	<title>Insert title here</title>
+	<title>Publicaciones disponibles</title>
 	<%@include file="/vistas/head.html" %>
 <!-- 	<script defer src="js/main.js"></script> -->
 	<!-- Vue -->
@@ -55,17 +55,20 @@
 				<div style='background-color:rgb(255, 255, 255)'>
 					<div class="bg-white rounded p-4 shadow md:flex justify-between" data-v-648b5d7b="" style="cursor: auto;">
 	  					<div data-v-648b5d7b="">
-	    					<a href="" data-v-648b5d7b="">
-	      						<h4 class="text-2xl font-semibold" data-v-648b5d7b="">${p.titulo} (${p.puntajeLibro})</h4>
-	   						</a>
+	      						<h4 class="text-2xl font-semibold" data-v-648b5d7b="">${p.titulo} - ${p.edicion} (${p.anio })</h4>
 	   						<p class="my-2 text-lg" data-v-648b5d7b="">${p.autor}</p>
-	   						<p class="my-2" data-v-648b5d7b="">${p.usuario} (${p.puntajeUsuario})</p>
+	   						<p class="my-2" data-v-648b5d7b="">${p.usuario}</p>
 	   						<div class="flex items-center mt-4" data-v-648b5d7b="">
 	   							<c:choose>
 									<c:when test="${p.solicitado==true}">
 										<div class="text-xs uppercase font-bold tracking-wider bg-green-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">
 	                    					Solicitado (${p.numeroSolicitudes})
 	               						</div>
+									</c:when>
+									<c:when test="${p.usuario == sessionScope.usuario.usuario }">
+										<div class="text-xs uppercase font-bold tracking-wider bg-gray-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">
+	                   						Solicitudes (${p.numeroSolicitudes})
+	                					</div>
 									</c:when>
 									<c:otherwise>
 										<div class="text-xs uppercase font-bold tracking-wider bg-gray-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">

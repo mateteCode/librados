@@ -16,10 +16,6 @@ import utils.Tiempo;
 
 public class TablaVirtualPublicacion {
 	private final String db = DB.librados.toString();
-	private final Tablas tablaOfrecidos = Tablas.ofrecidos;
-	private final Tablas tablaUsuarios = Tablas.usuarios;
-	private final Tablas tablaLibros = Tablas.libros;
-	
 	private final String SQLPublicaciones = "SELECT * FROM ofrecidos JOIN libros ON ofrecidos.id_libro = libros.id JOIN usuarios ON ofrecidos.id_usuario = usuarios.id ORDER BY ofrecidos.fecha DESC;";
 
 	public List<Publicacion> getPublicaciones(Usuario usuario) {
@@ -39,6 +35,8 @@ public class TablaVirtualPublicacion {
 				float saludLibro = rs.getFloat(5);
 				String autor = rs.getString(8);
 				String titulo = rs.getString(9);
+				int anio = rs.getInt(10);
+				String edicion = String.valueOf(rs.getInt(11)) + "a edición";
 				float puntajeLibro = rs.getFloat(12);
 				String usuarioLibro = rs.getString(15);
 				float puntajeUsuario = rs.getFloat(20);
@@ -59,11 +57,10 @@ public class TablaVirtualPublicacion {
 				TablaVirtualInteraccion consultaInteraccion = new TablaVirtualInteraccion();
 				boolean reservado = consultaInteraccion.isReservado(id_ofrecido);
 				boolean entregado = false;
-				System.out.println(id_ofrecido + ": " + solicitado);
 				
 				Publicacion publicacion = new Publicacion(id_ofrecido, imagenLibro, titulo, autor, usuarioLibro,
 						imagenUsuario, puntajeUsuario, distanciaUsuario, puntajeLibro, saludLibro,
-						nuevo, solicitado, numeroSolicitados, tiempo, reservado, entregado);
+						nuevo, solicitado, numeroSolicitados, tiempo, reservado, entregado, edicion, anio);
 				publicaciones.add(publicacion);
 			}
 		}

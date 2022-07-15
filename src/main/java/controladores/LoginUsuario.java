@@ -25,7 +25,7 @@ public class LoginUsuario extends HttpServlet {
 		TablaUsuarios consultasUsuarios = new TablaUsuarios();
 		Usuario usuario = null;
 		HttpSession session = request.getSession();
-		String url = "index.jsp";
+		String url = "Index?accion=disponibles";
 		//RequestDispatcher rd = null;
 		String mensaje = null;
 

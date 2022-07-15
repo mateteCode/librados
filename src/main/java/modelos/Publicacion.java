@@ -17,10 +17,12 @@ public class Publicacion {
 	private String tiempo;
 	private boolean reservado;
 	private boolean entregado;
+	private String edicion;
+	private int anio;
 
 	public Publicacion(int id_ofrecido, String imagenLibro, String titulo, String autor, String usuario,
 			String imagenUsuario, float puntajeUsuario, String distanciaUsuario, float puntajeLibro, float saludLibro,
-			boolean nuevo, boolean solicitado, int numeroSolicitudes, String tiempo, boolean reservado, boolean entregado) {
+			boolean nuevo, boolean solicitado, int numeroSolicitudes, String tiempo, boolean reservado, boolean entregado, String edicion, int anio) {
 		this.id_ofrecido = id_ofrecido;
 		this.imagenLibro = imagenLibro;
 		this.titulo = titulo;
@@ -37,6 +39,24 @@ public class Publicacion {
 		this.tiempo = tiempo;
 		this.reservado = reservado;
 		this.entregado = entregado;
+		this.edicion = edicion;
+		this.anio = anio;
+	}
+
+	public int getAnio() {
+		return anio;
+	}
+
+	public void setAnio(int anio) {
+		this.anio = anio;
+	}
+
+	public String getEdicion() {
+		return edicion;
+	}
+
+	public void setEdicion(String edicion) {
+		this.edicion = edicion;
 	}
 
 	public int getId_ofrecido() {
