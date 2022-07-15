@@ -1,0 +1,8 @@
+@charset "UTF-8";
+.navbar-nav > li > .dropdown-menu {
+	/*background-color: #212529;*/
+}
+
+navbarDropdownMenuLink > li {
+	font-size: 50px;
+}
