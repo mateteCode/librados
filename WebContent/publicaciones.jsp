@@ -59,23 +59,26 @@
 	   						<p class="my-2 text-lg" data-v-648b5d7b="">${p.autor}</p>
 	   						<p class="my-2" data-v-648b5d7b="">${p.usuario}</p>
 	   						<div class="flex items-center mt-4" data-v-648b5d7b="">
-	   							<c:choose>
-									<c:when test="${p.solicitado==true}">
-										<div class="text-xs uppercase font-bold tracking-wider bg-green-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">
-	                    					Solicitado (${p.numeroSolicitudes})
-	               						</div>
-									</c:when>
-									<c:when test="${p.usuario == sessionScope.usuario.usuario }">
-										<div class="text-xs uppercase font-bold tracking-wider bg-gray-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">
-	                   						Solicitudes (${p.numeroSolicitudes})
-	                					</div>
-									</c:when>
-									<c:otherwise>
-										<div class="text-xs uppercase font-bold tracking-wider bg-gray-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">
-	                   						<a href='Index?accion=solicitar&id=${p.id_ofrecido}'>Solicitarlo (${p.numeroSolicitudes})</a>
-	                					</div>
-									</c:otherwise>
-								</c:choose>
+	   							<c:if test="${p.entregado == false}">
+	   								<c:choose>
+										<c:when test="${p.solicitado==true}">
+											<div class="text-xs uppercase font-bold tracking-wider bg-green-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">
+		                    					Solicitado (${p.numeroSolicitudes})
+		               						</div>
+										</c:when>
+										<c:when test="${p.usuario == sessionScope.usuario.usuario }">
+											<div class="text-xs uppercase font-bold tracking-wider bg-gray-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">
+		                   						Solicitudes (${p.numeroSolicitudes})
+		                					</div>
+										</c:when>
+										<c:otherwise>
+											<div class="text-xs uppercase font-bold tracking-wider bg-gray-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">
+		                   						<a href='Index?accion=solicitar&id=${p.id_ofrecido}'>Solicitarlo (${p.numeroSolicitudes})</a>
+		                					</div>
+										</c:otherwise>
+									</c:choose>
+	   							</c:if>
+	   							
 								<c:if test="${p.reservado == true}">
 									<div class="text-xs uppercase font-bold tracking-wider bg-yellow-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">
 	                   					Reservado

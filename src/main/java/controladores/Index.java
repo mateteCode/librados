@@ -73,8 +73,10 @@ public class Index extends HttpServlet {
 						TablaVirtualInteraccion consultaInteraccion = new TablaVirtualInteraccion();
 						List<Interaccion> interacciones = consultaInteraccion.getInteracciones(usuario);
 						List<Interaccion> reservas = consultaInteraccion.getReservas(usuario);
+						List<Interaccion> entregas = consultaInteraccion.getEntregas(usuario);
 						session.setAttribute("interacciones", interacciones);
 						session.setAttribute("reservas", reservas);
+						session.setAttribute("entregas", entregas);
 						url="interacciones.jsp";
 						break;
 					case "reservar":
@@ -85,6 +87,12 @@ public class Index extends HttpServlet {
 						//session.setAttribute("interacciones", interacciones);
 						url="Index?accion=interacciones";
 						break;
+					case "entregar":
+						int id_reserva = Integer.parseInt(request.getParameter("id"));
+						int id_ofrecido = Integer.parseInt(request.getParameter("id_ofrecido"));
+						consultaInteraccion = new TablaVirtualInteraccion();
+						consultaInteraccion.entregar(id_reserva, id_ofrecido);
+						url="Index?accion=interacciones";
 				}
 			}
 			else {

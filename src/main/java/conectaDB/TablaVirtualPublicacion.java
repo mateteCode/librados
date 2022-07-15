@@ -56,7 +56,7 @@ public class TablaVirtualPublicacion {
 				boolean solicitado = consultaSolicitudes.isSolicitado(id_ofrecido, usuario.getId());
 				TablaVirtualInteraccion consultaInteraccion = new TablaVirtualInteraccion();
 				boolean reservado = consultaInteraccion.isReservado(id_ofrecido);
-				boolean entregado = false;
+				boolean entregado = consultaInteraccion.isEntregado(id_ofrecido);
 				
 				Publicacion publicacion = new Publicacion(id_ofrecido, imagenLibro, titulo, autor, usuarioLibro,
 						imagenUsuario, puntajeUsuario, distanciaUsuario, puntajeLibro, saludLibro,

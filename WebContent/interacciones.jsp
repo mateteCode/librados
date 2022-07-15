@@ -69,7 +69,7 @@
 					            <td>${p.usuario} (${p.puntaje})</td>
 					            <td>${p.distancia}</td>
 					            <td>${p.tiempo}</td>
-					            <td><a href="Index?accion=entregar&id=${p.id}"><i class="fa-solid fa-hand-peace"></i></a></td>
+					            <td><a href="Index?accion=entregar&id=${p.id}&id_ofrecido=${p.id_ofrecido}"><i class="fa-solid fa-hand-peace"></i></a></td>
 					        </tr>
 					    </c:forEach>
 		 			</table>
@@ -81,7 +81,27 @@
 			<br><br><br>
 			
 			<h3>Entregas</h3>
-			No hay ninguna.
+			<c:choose>
+				<c:when test="${sessionScope.entregas.size() > 0}">
+					<table class="table table-striped">
+					    <c:forEach items="${sessionScope.entregas}" var="p">
+					        <tr>
+					        	<td>${p.autorLibro}</td>
+					            <td>${p.tituloLibro}</td>
+		<%-- 			            <td>${p.id}</td> --%>
+		<%-- 			            <td>${p.id_ofrecido}</td> --%>
+		<%-- 			            <td>${p.id_usuario}</td> --%>
+					            <td>${p.usuario} (${p.puntaje})</td>
+					            <td>${p.distancia}</td>
+					            <td>${p.tiempo}</td>
+					        </tr>
+					    </c:forEach>
+		 			</table>
+		 		</c:when>
+				<c:otherwise>
+					No hay ninguna.
+				</c:otherwise>
+			</c:choose>
 			<br><br><br>
 		</div>
 		
